@@ -19,7 +19,7 @@ public class D05_hoverCategoriesStepDef {
         hooover.moveToElement(categories.get(randomNumber)).perform();
         String mainCategory = categories.get(randomNumber).getText();
         System.out.println(mainCategory);
-        List<WebElement> SubCategories =Hooks.driver.findElements(By.xpath("//ul[@class='top-menu notmobile']/li["+randomNumber+"]/ul[@class='sublist first-level']/li"));
+        List<WebElement> SubCategories =Hooks.driver.findElements(By.xpath("//ul[@class='top-menu notmobile']/li["+(randomNumber+1)+"]/ul[@class='sublist first-level']/li"));
         int SubrandomNumber =  new Random().nextInt(3);
         String subCat = SubCategories.get(SubrandomNumber).getText();
         System.out.println(subCat);
