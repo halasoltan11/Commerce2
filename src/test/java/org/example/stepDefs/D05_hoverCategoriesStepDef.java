@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 public class D05_hoverCategoriesStepDef {
+    String subCat;
     @When("user hoover on any Main category then select the sub")
     public void userHooverOnAnyMainCategoryThenSelectTheSub() {
         List<WebElement> categories = Hooks.driver.findElements(By.cssSelector("ul[class='top-menu notmobile']>li>a[href]"));
@@ -21,14 +22,14 @@ public class D05_hoverCategoriesStepDef {
         System.out.println(mainCategory);
         List<WebElement> SubCategories =Hooks.driver.findElements(By.xpath("//ul[@class='top-menu notmobile']/li["+(randomNumber+1)+"]/ul[@class='sublist first-level']/li"));
         int SubrandomNumber =  new Random().nextInt(3);
-        String subCat = SubCategories.get(SubrandomNumber).getText();
+         subCat = SubCategories.get(SubrandomNumber).getText();
         System.out.println(subCat);
 
         SubCategories.get(SubrandomNumber).findElement(By.tagName("a")).click();
     }
 
     @Then("Page is displayed with the title which user select")
-    public void pageIsDisplayedWithTheTitleWhichUserSelect(String subCat) {
+    public void pageIsDisplayedWithTheTitleWhichUserSelect() {
 
         String pageTitle = Hooks.driver.findElement(By.xpath("//h1")).getText();
         Assert.assertTrue(pageTitle.contains(subCat));
